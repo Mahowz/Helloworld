@@ -19,7 +19,8 @@ namespace HelloWorld
 
         static void Blackjack()
         {
-           
+            bool win = false;
+            bool lose = false;
             string input;
             var diceroll = 0;
             var score = 0;
@@ -42,10 +43,10 @@ namespace HelloWorld
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Throwing dice!");
                         
-
                         diceroll = dice.Next(1, 7);
+                        Console.WriteLine("You throw " + diceroll);
                         score = score + diceroll;
-                        Console.WriteLine(score);
+                        Console.WriteLine("You have a total of " + score);
                         Console.ForegroundColor = ConsoleColor.Black;
 
                         switch (score)
@@ -53,21 +54,47 @@ namespace HelloWorld
                             case 20:
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("You won");
-                                score = 22;
+                                Console.WriteLine();
+                                win = true;
+                                if (win == true)
+                                { 
+                                score = 0;
+                                }
+                                Console.WriteLine("Want to play again? (y/n)");
+
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 break;
                             case 21:
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("You've won");
-                                score = 22;
+                                Console.WriteLine();
+                                win = true;
+                                if (win == true)
+                                {
+                                    score = 0;
+                                }
+                                Console.WriteLine("Want to play again? (y/n)");
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 break;
+                            case >= 22:
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("You have lost");
+                                Console.WriteLine();
+                                lose = true;
+                                if (lose == true)
+                                {
+                                    score = 0;
+                                }
+                                Console.WriteLine("Want to play again? (y/n)");
+                                Console.ForegroundColor= ConsoleColor.Black;
+                                break;
+
                         }
 
                         break;
                     case "n":
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("You have stopped throwing the dice");
+                        Console.WriteLine("You have stopped throwing the dice. The game will now shutdown");
                         Console.ForegroundColor = ConsoleColor.Black;
                         score = 22;
                         break;
