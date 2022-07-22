@@ -8,7 +8,7 @@ namespace HelloWorld
     class Program
     {
         static void Main(string[] args)
-        {   //Commentaar voert niet uit dan eerst verwijderen om te kunnen aanroepen
+        {   //Commentaar voert niet uit dan eerst  // verwijderen om te kunnen aanroepen
             //TheNumbers();
             //Greattranslator();
             //Tellen();
@@ -19,11 +19,13 @@ namespace HelloWorld
 
         static void Blackjack()
         {
+            //varriablen declareren
             bool win = false;
             bool lose = false;
             string input;
             var diceroll = 0;
             var score = 0;
+            //Random number varriable aanmaken
             var dice = new Random();
 
             Console.WriteLine("Welcome to blackjack");
@@ -31,18 +33,21 @@ namespace HelloWorld
             Console.ForegroundColor = ConsoleColor.Black;
 
 
-
+            //While () begin van de loop die zich herhaalt tot voldaan aan voorwaarde
             while (score <= 21)
             {
+                //Past de input van de key's aan naar type string en altijd lowercase
                 input = Console.ReadKey().KeyChar.ToString().ToLower();
                 
                 Console.WriteLine();
+                //Begin van "Als dit dan dat"
                 switch (input)
                 {
+                    //Case altijd beginnen met case en eindigen met break. Vergeet de : niet
                     case "y":
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Throwing dice!");
-                        
+                        //diceroll wordt hier gelijk gezet aan het willekeurige nummer dat voort komt uit dice tss 1 en 7 (1 tem 6 dus)
                         diceroll = dice.Next(1, 7);
                         Console.WriteLine("You throw " + diceroll);
                         score = score + diceroll;
@@ -96,9 +101,11 @@ namespace HelloWorld
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("You have stopped throwing the dice. The game will now shutdown");
                         Console.ForegroundColor = ConsoleColor.Black;
+                        //Score op 22 zetten om de loop te stoppen (>21)
                         score = 22;
                         break;
                     default:
+                        //Maken dat ze alleen maar y of n kunnen bezigen
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Please use y or n");
                         Console.ForegroundColor = ConsoleColor.Black;
