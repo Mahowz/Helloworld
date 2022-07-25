@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
+//ctrl + k d = brackets proper zetten
 
 using System;
 
@@ -13,7 +13,7 @@ namespace HelloWorld
             //Greattranslator();
             //Tellen();
             Blackjack();
-            
+
 
         }
 
@@ -34,36 +34,35 @@ namespace HelloWorld
             Console.WriteLine("Welcome to blackjack");
             Console.WriteLine("Throw the dice? (y/n)");
             Console.ForegroundColor = ConsoleColor.Black;
-                                  
-                //While () begin van de loop die zich herhaalt tot voldaan aan voorwaarde
-                while (score <= 21)
+
+            //While () begin van de loop die zich herhaalt tot voldaan aan voorwaarde
+            while (score <= 21)
+            {
+                //Past de input van de key's aan naar type string en altijd lowercase
+                input = Console.ReadKey().KeyChar.ToString().ToLower();
+
+                Console.WriteLine();
+                //Begin van "Als dit dan dat"
+                switch (input)
                 {
-                    //Past de input van de key's aan naar type string en altijd lowercase
-                    input = Console.ReadKey().KeyChar.ToString().ToLower();
+                    //Case altijd beginnen met case en eindigen met break. Vergeet de : niet
+                    case "y":
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Throwing dice!");
+                        //diceroll wordt hier gelijk gezet aan het willekeurige nummer dat voort komt uit dice tss 1 en 7 (1 tem 6 dus)
+                        diceRoll = dice.Next(1, 7);
+                        Console.WriteLine("You throw " + diceRoll);
+                        score = score + diceRoll;
+                        Console.WriteLine("You have a total of " + score);
+                        Console.ForegroundColor = ConsoleColor.Black;
 
-                    Console.WriteLine();
-                    //Begin van "Als dit dan dat"
-                    switch (input)
-                    {
-                       
-                        //Case altijd beginnen met case en eindigen met break. Vergeet de : niet
-                        case "y":
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("Throwing dice!");
-                            //diceroll wordt hier gelijk gezet aan het willekeurige nummer dat voort komt uit dice tss 1 en 7 (1 tem 6 dus)
-                            diceRoll = dice.Next(1, 7);
-                            Console.WriteLine("You throw " + diceRoll);
-                            score = score + diceRoll;
-                            Console.WriteLine("You have a total of " + score);
-                            Console.ForegroundColor = ConsoleColor.Black;
-
-                            switch (score)
-                            {
-                                case 20:
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("You have 20. The computer will now roll the dice");
-                                    Console.WriteLine();
-                                    Console.WriteLine();
+                        switch (score)
+                        {
+                            case 20:
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("You have 20. The computer will now roll the dice");
+                                Console.WriteLine();
+                                Console.WriteLine();
 
                                 while (pcScore <= 21)
                                 {
@@ -87,13 +86,11 @@ namespace HelloWorld
 
                                                 Console.WriteLine("Computer now has a total of " + pcScore);
                                                 Console.WriteLine();
-
                                             }
                                             else
                                             {
                                                 pcScore = 22;
                                             }
-
                                             pcScore = 22;
                                             break;
                                         case 21:
@@ -110,23 +107,23 @@ namespace HelloWorld
                                     }
                                 }
 
-                                    gameOver = true;
-                                    if (gameOver == true)
-                                    {
-                                        score = 0;
-                                        pcScore = 0;
-                                    }
-                                    Console.WriteLine("Want to play again? (y/n)");
+                                gameOver = true;
+                                if (gameOver == true)
+                                {
+                                    score = 0;
+                                    pcScore = 0;
+                                }
+                                Console.WriteLine("Want to play again? (y/n)");
 
-                                    Console.ForegroundColor = ConsoleColor.Black;
-                                    break;
-                                case 21:
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("You have 21. The computer will now roll the dice");
-                                    Console.WriteLine();
-                                    Console.WriteLine();
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                break;
+                            case 21:
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("You have 21. The computer will now roll the dice");
+                                Console.WriteLine();
+                                Console.WriteLine();
 
-                                while (pcScore <= 21) 
+                                while (pcScore <= 21)
                                 {
                                     pcRoll = dice.Next(1, 7);
                                     Console.WriteLine("The computer rolls " + pcRoll);
@@ -144,7 +141,7 @@ namespace HelloWorld
                                             Console.WriteLine("The computer has 21 it is a tie.");
                                             Console.WriteLine();
                                             pcScore = 22;
-                                            break;  
+                                            break;
                                         case >= 22:
                                             Console.WriteLine("The computer has lost");
                                             Console.WriteLine();
@@ -152,64 +149,64 @@ namespace HelloWorld
                                             break;
                                     }
                                 }
-                                    gameOver = true;
-                                    if (gameOver == true)
-                                    {
-                                        score = 0;
-                                        pcScore=0;  
-                                    }
-                                    Console.WriteLine("Want to play again? (y/n)");
-                                    Console.ForegroundColor = ConsoleColor.Black;
-                                    break;
-                                case >= 22:
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("You have lost");
-                                    Console.WriteLine();
-                                    gameOver = true;
-                                    if (gameOver == true)
-                                    {
-                                        score = 0;
-                                    }
-                                    Console.WriteLine("Want to play again? (y/n)");
-                                    Console.ForegroundColor = ConsoleColor.Black;
-                                    break;
+                                gameOver = true;
+                                if (gameOver == true)
+                                {
+                                    score = 0;
+                                    pcScore = 0;
+                                }
+                                Console.WriteLine("Want to play again? (y/n)");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                break;
+                            case >= 22:
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("You have lost");
+                                Console.WriteLine();
+                                gameOver = true;
+                                if (gameOver == true)
+                                {
+                                    score = 0;
+                                }
+                                Console.WriteLine("Want to play again? (y/n)");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                break;
 
-                            }
+                        }
 
-                            break;
-                        case "n":
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("You have stopped throwing the dice. The game will now shutdown");
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            //Score op 22 zetten om de loop te stoppen (>21)
-                            score = 22;
-                            break;
-                        default:
-                            //Maken dat ze alleen maar y of n kunnen bezigen
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("Please use y or n");
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            break;
-                    }
-
-
-
-
-
-
+                        break;
+                    case "n":
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("You have stopped throwing the dice. The game will now shutdown");
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        //Score op 22 zetten om de loop te stoppen (>21)
+                        score = 22;
+                        break;
+                    default:
+                        //Maken dat ze alleen maar y of n kunnen bezigen
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Please use y or n");
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        break;
                 }
 
-            
+
+
+
+
+
+            }
+
+
         }
-            
-            
-            
 
 
 
 
 
-       
+
+
+
+
         static void Tellen()
         {
             Console.WriteLine("Optellen en aftellen ");
