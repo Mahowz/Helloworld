@@ -77,8 +77,23 @@ namespace HelloWorld
                                     switch (pcScore)
                                     {
                                         case 20:
-                                            Console.WriteLine("You both have 20 it is a tie");
+                                            Console.WriteLine("Computer has 20. Same as you and will roll the dice once more");
                                             Console.WriteLine();
+                                            if (pcScore == score)
+                                            {
+                                                pcRoll = dice.Next(1, 7);
+                                                Console.WriteLine("Computer rolls " + pcRoll);
+                                                pcScore = pcScore + pcRoll;
+
+                                                Console.WriteLine("Computer now has a total of " + pcScore);
+                                                Console.WriteLine();
+
+                                            }
+                                            else
+                                            {
+                                                pcScore = 22;
+                                            }
+
                                             pcScore = 22;
                                             break;
                                         case 21:
