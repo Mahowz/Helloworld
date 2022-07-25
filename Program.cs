@@ -22,11 +22,14 @@ namespace HelloWorld
             //varriablen declareren
             bool gameOver = false;
             string input;
+            //voor player roll en score
             var diceRoll = 0;
             var score = 0;
             //Random number varriable aanmaken
             var dice = new Random();
-            
+            //voor pc roll en score
+            var pcRoll = 0;
+            var pcScore = 0;
 
             Console.WriteLine("Welcome to blackjack");
             Console.WriteLine("Throw the dice? (y/n)");
@@ -58,12 +61,45 @@ namespace HelloWorld
                             {
                                 case 20:
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("You won");
+                                    Console.WriteLine("You have 20. The computer will now roll the dice");
                                     Console.WriteLine();
+                                    Console.WriteLine();
+
+                                while (pcScore <= 21)
+                                {
+
+                                    pcRoll = dice.Next(1, 7);
+                                    Console.WriteLine("The computer rolls " + pcRoll);
+                                    pcScore = pcScore + pcRoll;
+                                    Console.WriteLine("The computer now has a total of " + pcScore);
+                                    Console.WriteLine();
+
+                                    switch (pcScore)
+                                    {
+                                        case 20:
+                                            Console.WriteLine("You both have 20 it is a tie");
+                                            Console.WriteLine();
+                                            pcScore = 22;
+                                            break;
+                                        case 21:
+                                            Console.WriteLine("The computer has 21. You have lost");
+                                            Console.WriteLine();
+                                            pcScore = 22;
+                                            break;
+                                        case >= 22:
+                                            Console.WriteLine("The computer has lost");
+                                            Console.WriteLine();
+                                            pcScore = 22;
+                                            break;
+
+                                    }
+                                }
+
                                     gameOver = true;
                                     if (gameOver == true)
                                     {
                                         score = 0;
+                                        pcScore = 0;
                                     }
                                     Console.WriteLine("Want to play again? (y/n)");
 
@@ -71,12 +107,41 @@ namespace HelloWorld
                                     break;
                                 case 21:
                                     Console.ForegroundColor = ConsoleColor.White;
-                                    Console.WriteLine("You've won");
+                                    Console.WriteLine("You have 21. The computer will now roll the dice");
                                     Console.WriteLine();
+                                    Console.WriteLine();
+
+                                while (pcScore <= 21) 
+                                {
+                                    pcRoll = dice.Next(1, 7);
+                                    Console.WriteLine("The computer rolls " + pcRoll);
+                                    pcScore = pcRoll + pcScore;
+                                    Console.WriteLine("The computer now has a total of " + pcScore);
+
+                                    switch (pcScore)
+                                    {
+                                        case 20:
+                                            Console.WriteLine("The computer has 20. The computer has lost.");
+                                            Console.WriteLine();
+                                            pcScore = 22;
+                                            break;
+                                        case 21:
+                                            Console.WriteLine("The computer has 21 it is a tie.");
+                                            Console.WriteLine();
+                                            pcScore = 22;
+                                            break;  
+                                        case >= 22:
+                                            Console.WriteLine("The computer has lost");
+                                            Console.WriteLine();
+                                            pcScore = 22;
+                                            break;
+                                    }
+                                }
                                     gameOver = true;
                                     if (gameOver == true)
                                     {
                                         score = 0;
+                                        pcScore=0;  
                                     }
                                     Console.WriteLine("Want to play again? (y/n)");
                                     Console.ForegroundColor = ConsoleColor.Black;
